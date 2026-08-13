@@ -2,12 +2,12 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-st.set_page_config(page_title="Análisis de Películas", page_icon="🎬")
+st.set_page_config(page_title="Análisis de Películas")
 
 df = pd.read_csv("peliculas.csv")
 
-st.title("🎬 Análisis sencillo de películas")
-st.write("Esta aplicación muestra información básica de un pequeño conjunto de películas.")
+st.title("Análisis sencillo de películas")
+st.write("Información básica de un conjunto de películas")
 
 st.sidebar.header("Filtros")
 
@@ -33,11 +33,11 @@ st.subheader("📋 Datos")
 st.dataframe(df_filtrado, use_container_width=True)
 
 if len(df_filtrado) > 0:
-    st.subheader("⭐ Película con mayor calificación")
+    st.subheader("Película con mayor calificación")
     mejor = df_filtrado.loc[df_filtrado["calificacion"].idxmax()]
     st.write("**" + mejor["titulo"] + "** tiene una calificación de **" + str(mejor["calificacion"]) + "**.")
 
-    st.subheader("📊 Películas por género")
+    st.subheader("Películas por género")
     conteo = df_filtrado["genero"].value_counts()
 
     fig, ax = plt.subplots()
