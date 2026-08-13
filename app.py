@@ -6,7 +6,7 @@ st.set_page_config(page_title="Análisis de Películas")
 
 df = pd.read_csv("peliculas.csv")
 
-st.title("Análisis sencillo de películas")
+st.title("Análisis de películas")
 st.write("Información básica de un conjunto de películas")
 
 st.sidebar.header("Filtros")
