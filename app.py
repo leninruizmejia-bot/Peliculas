@@ -2,19 +2,19 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-st.set_page_config(page_title="Análisis de Películas")
+st.set_page_config(page_title="Análisis de Peliculas")
 
 df = pd.read_csv("peliculas.csv")
 
-st.title("Análisis de películas")
-st.write("Información básica de un conjunto de películas")
+st.title("Analisis de peliculas")
+st.write("Información basica de un conjunto de peliculas")
 
 st.sidebar.header("Filtros")
 
 generos = ["Todos"] + sorted(df["genero"].unique().tolist())
-genero = st.sidebar.selectbox("Selecciona un género", generos)
+genero = st.sidebar.selectbox("Selecciona un genero", generos)
 
-texto = st.sidebar.text_input("Buscar película")
+texto = st.sidebar.text_input("Buscar pelicula")
 
 df_filtrado = df.copy()
 
@@ -37,14 +37,14 @@ if len(df_filtrado) > 0:
     mejor = df_filtrado.loc[df_filtrado["calificacion"].idxmax()]
     st.write("**" + mejor["titulo"] + "** tiene una calificación de **" + str(mejor["calificacion"]) + "**.")
 
-    st.subheader("Películas por género")
+    st.subheader("Películas por genero")
     conteo = df_filtrado["genero"].value_counts()
 
     fig, ax = plt.subplots()
     conteo.plot(kind="bar", ax=ax)
-    ax.set_xlabel("Género")
+    ax.set_xlabel("Genero")
     ax.set_ylabel("Cantidad")
-    ax.set_title("Cantidad de películas por género")
+    ax.set_title("Cantidad de películas por genero")
     st.pyplot(fig)
 else:
-    st.warning("No se encontraron películas con los filtros seleccionados.")
+    st.warning("No se encontraron películas con los filtros seleccionados")
