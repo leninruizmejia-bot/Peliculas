@@ -29,7 +29,7 @@ col1.metric("Películas", len(df_filtrado))
 col2.metric("Calificación promedio", round(df_filtrado["calificacion"].mean(), 2) if len(df_filtrado) else 0)
 col3.metric("Año más reciente", int(df_filtrado["año"].max()) if len(df_filtrado) else "-")
 
-st.subheader("📋 Datos")
+st.subheader("Datos")
 st.dataframe(df_filtrado, use_container_width=True)
 
 if len(df_filtrado) > 0:
